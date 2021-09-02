@@ -6,7 +6,7 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637660618534746742
+      ticks: 637661482456651894
     m_Hash: 1162992144
   m_LockFileStatus:
     m_FilePath: C:/Users/jrd10/OneDrive/Documents/Github/Senior-Project/New Unity
@@ -15,7 +15,7 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637660618675689739
+      ticks: 637661482679903306
     m_Hash: 3561096257
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
@@ -944,6 +944,7 @@ m_PackageAssets:
         - 1.2.1
         - 1.2.2
         - 1.2.3
+        - 1.2.4
         compatible:
         - 1.0.2
         - 1.0.3
@@ -956,7 +957,8 @@ m_PackageAssets:
         - 1.2.1
         - 1.2.2
         - 1.2.3
-        verified: 1.2.3
+        - 1.2.4
+        verified: 1.2.4
       dependencies: []
       resolvedDependencies: []
       keywords: []
