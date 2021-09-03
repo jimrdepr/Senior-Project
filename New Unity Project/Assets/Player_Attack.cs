@@ -42,7 +42,6 @@ public class Player_Attack : MonoBehaviour
     {
         int layerMask = 1 << 8;
         layerMask = ~layerMask;
-        print(layerMask);
         hit = Physics2D.Raycast(transform.position, direction, range, layerMask);
         if(hit.collider != null)
             print(hit.collider.gameObject.name);
