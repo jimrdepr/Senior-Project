@@ -33,11 +33,11 @@ public class Player_Move : MonoBehaviour
             Move();
             animator.SetFloat("moveX", change.x);
             animator.SetFloat("moveY", change.y);
-            animator.SetBool("Walking", true);
+            animator.SetBool("walking", true);
         }
         else
         {
-            animator.SetBool("Walking", false);
+            animator.SetBool("walking", false);
 
         }
     }
