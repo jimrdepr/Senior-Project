@@ -44,8 +44,7 @@ public class Player_Move : MonoBehaviour
 
 void Move()
     {
-        rb.MovePosition(
-            rb.transform.position + (change * speed * Time.smoothDeltaTime));
+        rb.MovePosition(rb.transform.position + change * speed * Time.smoothDeltaTime);
         
     }
 }
