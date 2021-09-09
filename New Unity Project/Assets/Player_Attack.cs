@@ -44,7 +44,11 @@ public class Player_Attack : MonoBehaviour
         layerMask = ~layerMask;
         hit = Physics2D.Raycast(transform.position, direction, range, layerMask);
         if(hit.collider != null)
+        {
             print(hit.collider.gameObject.name);
+            Enemy_Actions nme = GetComponent<Enemy_Actions>();
+            hit.collider.gameObject.SendMessage("TakeDamage");
+        }
         else
             print("missed");
     }

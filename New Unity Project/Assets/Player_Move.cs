@@ -33,18 +33,17 @@ public class Player_Move : MonoBehaviour
             Move();
             animator.SetFloat("moveX", change.x);
             animator.SetFloat("moveY", change.y);
-            animator.SetBool("walking", true);
+            animator.SetBool("moving", true);
         }
         else
         {
-            animator.SetBool("walking", false);
+            animator.SetBool("moving", false);
 
         }
     }
 
 void Move()
     {
-        rb.MovePosition(rb.transform.position + change * speed * Time.smoothDeltaTime);
-        
+        rb.MovePosition(transform.position + (change * speed * Time.smoothDeltaTime));
     }
 }
