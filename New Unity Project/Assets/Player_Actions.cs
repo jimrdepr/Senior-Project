@@ -27,7 +27,6 @@ public class Player_Actions : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         change = Vector3.zero;
         change.x = Input.GetAxisRaw("Horizontal");
         change.y = Input.GetAxisRaw("Vertical");

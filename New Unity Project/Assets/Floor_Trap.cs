@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class Floor_Trap : MonoBehaviour
 {
-    float coolDown = 0;
-    bool startTrap = false;
+    float coolDown;
+    bool startTrap;
+    Collider2D box;
     // Start is called before the first frame update
     void Start()
     {
-        
+        coolDown = 0;
+        startTrap = false;
+        box = GetComponent<BoxCollider2D>();
     }
 
     // Update is called once per frame
@@ -19,7 +22,14 @@ public class Floor_Trap : MonoBehaviour
         {
             if(coolDown <= 0)
             {
-                print("trap gottcha");
+                Collider2D[] hit = Physics2D.OverlapBoxAll(transform.position, box.bounds.size, 0);
+                foreach(Collider2D i in hit)
+                {
+                    if(i.tag == "Player")
+                        i.gameObject.SendMessage("TakeDamage");
+                    if(i.tag == "Enemy")
+                        i.gameObject.SendMessage("TakeDamage");
+                }
                 coolDown = 2;
             }
             else
@@ -29,7 +39,7 @@ public class Floor_Trap : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.gameObject.tag == "Player")
+        if(other.gameObject.tag == "Player" || other.gameObject.tag == "Enemy")
         {
             startTrap = true;
             coolDown = 2;
@@ -38,7 +48,7 @@ public class Floor_Trap : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D other)
     {
-        if(other.gameObject.tag == "Player")
+        if(other.gameObject.tag == "Player" || other.gameObject.tag == "Enemy")
         {
             startTrap = false;
         }
