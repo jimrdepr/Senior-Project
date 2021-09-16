@@ -57,13 +57,17 @@ public class Enemy_Actions : MonoBehaviour
     void OnCollisionEnter2D(Collision2D other)
     {
         if(other.gameObject.tag == "Player")
-            print("Gotcha");
+        {
+            other.gameObject.SendMessage("TakeDamage");
+        }
     }
 
     void OnCollisionStay2D(Collision2D other)
     {
         if(other.gameObject.tag == "Player")
-            print("Get outa my way");
+        {
+            other.gameObject.SendMessage("TakeDamage");
+        }
     }
 
     void Move()
