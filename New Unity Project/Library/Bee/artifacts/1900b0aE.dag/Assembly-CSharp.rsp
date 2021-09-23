@@ -331,13 +331,11 @@
 -r:"Library/Bee/artifacts/1900b0aE.dag/Unity.VSCode.Editor.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/UnityEditor.UI.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/UnityEngine.UI.ref.dll"
-"Assets/Bomb.cs"
-"Assets/Camera_Follow.cs"
-"Assets/Enemy_Actions.cs"
-"Assets/Floor_Trap.cs"
-"Assets/Player_Actions.cs"
-"Assets/Player_Attack.cs"
-"Assets/Player_Move.cs"
+"Assets/Scripts/Bomb.cs"
+"Assets/Scripts/Camera_Follow.cs"
+"Assets/Scripts/Enemy_Actions.cs"
+"Assets/Scripts/Floor_Trap.cs"
+"Assets/Scripts/Player_Actions.cs"
 -langversion:8.0
 
 /deterministic
