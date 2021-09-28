@@ -54,9 +54,32 @@ public class Enemy_Actions : MonoBehaviour
     {
         if(other.tag == "Player")
         {
-            startTimer = false;
-            spotted = true;
-            aggroTimer = 5;
+            Vector2 direction = (other.transform.position - transform.position);
+            RaycastHit2D sight = Physics2D.Raycast(transform.position, direction * 5);
+            if(sight.collider.name == "Player")
+            {
+                startTimer = false;
+                spotted = true;
+                aggroTimer = 5;
+            }
+        }
+    }
+
+    void OnTriggerStay2D(Collider2D other)
+    {
+        if(!spotted)
+        {
+            if(other.tag == "Player")
+            {
+                Vector2 direction = (other.transform.position - transform.position);
+                RaycastHit2D sight = Physics2D.Raycast(transform.position, direction * 5);
+                if(sight.collider.name == "Player")
+                {
+                    startTimer = false;
+                    spotted = true;
+                    aggroTimer = 5;
+                }
+            }
         }
     }
 
@@ -119,7 +142,7 @@ public class Enemy_Actions : MonoBehaviour
         Destroy(gameObject);
         GameObject p = GameObject.FindWithTag("Player");
         p.GetComponent<Player_Actions>().AddScore(100);
-        var rand = Random.Range(0, 3);
+        int rand = Random.Range(0, 3);
         if(rand == 0)
         {
             Instantiate(bomb, transform.position, Quaternion.identity);  

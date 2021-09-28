@@ -8,6 +8,7 @@ TagManager:
   - Bomb
   - Heart
   - Coin
+  - Chest
   layers:
   - Default
   - TransparentFX

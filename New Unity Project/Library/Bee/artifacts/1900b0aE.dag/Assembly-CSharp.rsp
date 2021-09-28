@@ -336,6 +336,7 @@
 "Assets/Scripts/Enemy_Actions.cs"
 "Assets/Scripts/Floor_Trap.cs"
 "Assets/Scripts/Item_Pickup.cs"
+"Assets/Scripts/Open_Chest.cs"
 "Assets/Scripts/Player_Actions.cs"
 -langversion:8.0
 

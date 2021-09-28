@@ -17,7 +17,7 @@ public class Player_Actions : MonoBehaviour
     float attackCooldown = 0;
     float hitCooldown = 0;
     float bombCooldown = 0;
-    float range = 2;
+    float range = 1.5f;
     bool invincible = false;
     bool dead = false;
     Vector3 change;
@@ -121,9 +121,13 @@ public class Player_Actions : MonoBehaviour
                 e.TakeDamage();
                 e.AddKnockback(transform, 1000);
             }
+
+            if(hit.collider.gameObject.tag == "Chest")
+            {
+                hit.collider.gameObject.GetComponent<Open_Chest>().Open();
+            }
+            print(hit.collider.name);
         }
-        else
-            print("missed");
     }
 
     void UpdateAnimationAndMove()
