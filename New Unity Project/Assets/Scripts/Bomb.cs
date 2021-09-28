@@ -24,6 +24,7 @@ public class Bomb : MonoBehaviour
                 rb = gameObject.AddComponent<Rigidbody2D>();
                 rb.gravityScale = 0;
                 rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+                rb.mass = 10;
                 circle = gameObject.AddComponent<CircleCollider2D>();
                 circle.radius = transform.localScale.x;
                 added = true;
@@ -50,7 +51,9 @@ public class Bomb : MonoBehaviour
             }
             if(i.gameObject.tag == "Enemy")
             {
-                i.gameObject.GetComponent<Enemy_Actions>().TakeDamage();
+                Enemy_Actions e = i.gameObject.GetComponent<Enemy_Actions>();
+                e.TakeDamage();
+                e.AddKnockback(transform, 1000);
             }
         }
         Destroy(gameObject);

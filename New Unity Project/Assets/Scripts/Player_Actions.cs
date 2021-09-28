@@ -12,7 +12,8 @@ public class Player_Actions : MonoBehaviour
     int gold = 0;
     int bombCount = 3;
     int kills = 0;
-    float speed = 100;
+    int maxHealth = 3;
+    float speed = 10;
     float attackCooldown = 0;
     float hitCooldown = 0;
     float bombCooldown = 0;
@@ -65,21 +66,27 @@ public class Player_Actions : MonoBehaviour
         }
         else
             bombCooldown -= Time.deltaTime;
+
         if(attackCooldown <= 0)
         {
-            if(Input.GetKeyDown("space") && currentstate != PlayerState.attack)
+            if(!dead)
             {
-                attackCooldown = .20f;
-                Attack();
-                StartCoroutine(AttackCo());
+                if(Input.GetKeyDown("space") && currentstate != PlayerState.attack)
+                {
+                    attackCooldown = .20f;
+                    Attack();
+                    StartCoroutine(AttackCo());
+                }
             }
         }
         else
             attackCooldown -= Time.deltaTime;
+
         if (currentstate == PlayerState.walk)
         {
             UpdateAnimationAndMove();
         }
+        
         if(hitCooldown <= 0)
             invincible = false;
         else
@@ -89,6 +96,7 @@ public class Player_Actions : MonoBehaviour
         }
 
     }
+    
     private IEnumerator AttackCo()
     {
         animator.SetBool("attacking", true);
@@ -98,11 +106,12 @@ public class Player_Actions : MonoBehaviour
         yield return new WaitForSeconds(.33f);
         currentstate = PlayerState.walk;
     }
+
     void Attack()
     {
         int layerMask = 1 << 8;
         layerMask = ~layerMask;
-        hit = Physics2D.Raycast(transform.position, direction, range, layerMask);
+        hit = Physics2D.CircleCast(transform.position, 1f, direction, range, layerMask);
 
         if(hit.collider != null)
         {
@@ -110,6 +119,7 @@ public class Player_Actions : MonoBehaviour
             {
                 Enemy_Actions e = hit.collider.gameObject.GetComponent<Enemy_Actions>();
                 e.TakeDamage();
+                e.AddKnockback(transform, 1000);
             }
         }
         else
@@ -132,7 +142,7 @@ public class Player_Actions : MonoBehaviour
 
     void Move()
     {
-        rb.MovePosition(transform.position + (change * speed * Time.smoothDeltaTime));
+        rb.MovePosition(transform.position + (change * speed * Time.fixedDeltaTime));
     }
 
     public void TakeDamage()
@@ -151,6 +161,18 @@ public class Player_Actions : MonoBehaviour
         score += amnt;
         kills++;
     }
+
+    void AddHealth()
+    {
+        if(health < maxHealth)
+            health++;
+    }
+
+    void AddBomb()
+    {
+        bombCount++;
+    }
+
     public void ChangeGold(int amount, bool change)
     {
         if (change == true)
@@ -166,6 +188,7 @@ public class Player_Actions : MonoBehaviour
     void Die()
     {
         dead = true;
+        Destroy(GetComponent<BoxCollider2D>());
     }
 
     void PlaceBomb()
@@ -174,6 +197,24 @@ public class Player_Actions : MonoBehaviour
         {
             Instantiate(bomb, transform.position, Quaternion.identity);  
             bombCount--;
+        }
+    }
+
+    public void PickupItem(string name)
+    {
+        if(name == "Heart")
+        {
+            AddHealth();
+        }
+
+        if(name == "Bomb")
+        {
+            AddBomb();
+        }
+
+        if(name == "Coin")
+        {
+            ChangeGold(1, true);
         }
     }
 

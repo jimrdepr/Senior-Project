@@ -13611,6 +13611,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa34dc57c59e5d549a67afd38f6f7f62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bomb: {fileID: 1922440966336689912, guid: acf4c2aeef2fc7642ba9feb937001f55, type: 3}
+  coin: {fileID: 5065990226133137919, guid: 12bd77095a3558a4fb38e24c8cbcd71c, type: 3}
+  heart: {fileID: 391345551156808990, guid: afa82977830c5a34dbe92160b7f4da10, type: 3}
 --- !u!58 &1673985317
 CircleCollider2D:
   m_ObjectHideFlags: 0

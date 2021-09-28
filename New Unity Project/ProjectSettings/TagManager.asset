@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Enemy
   - Bomb
+  - Heart
+  - Coin
   layers:
   - Default
   - TransparentFX

@@ -6,6 +6,9 @@ public class Enemy_Actions : MonoBehaviour
 {
     Transform target;
     Vector2 origin;
+    public GameObject bomb;
+    public GameObject coin;
+    public GameObject heart;
 
     int health = 3;
     float speed = 3;
@@ -104,10 +107,30 @@ public class Enemy_Actions : MonoBehaviour
         }
     }
 
+    public void AddKnockback(Transform other, int force)
+    {
+        Rigidbody2D rb = GetComponent<Rigidbody2D>();
+        Vector2 hitDirection = (transform.position - other.transform.position).normalized;
+        GetComponent<Rigidbody2D>().AddForce(hitDirection * force);
+    }
+
     void Die()
     {
         Destroy(gameObject);
         GameObject p = GameObject.FindWithTag("Player");
         p.GetComponent<Player_Actions>().AddScore(100);
+        var rand = Random.Range(0, 3);
+        if(rand == 0)
+        {
+            Instantiate(bomb, transform.position, Quaternion.identity);  
+        }
+        else if(rand == 1)
+        {
+            Instantiate(coin, transform.position, Quaternion.identity);  
+        }
+        else if(rand == 2)
+        {
+            Instantiate(heart, transform.position, Quaternion.identity);  
+        }
     }
 }
