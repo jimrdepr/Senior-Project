@@ -2,14 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum PlayerState { walk, attack, interact }
 public class Player_Actions : MonoBehaviour
 {
+    public PlayerState currentstate;
     Rigidbody2D rb;
     int health = 3;
     int score = 0;
+    int gold = 0;
     int bombCount = 3;
     int kills = 0;
-    float speed = 50;
+    float speed = 100;
     float attackCooldown = 0;
     float hitCooldown = 0;
     float bombCooldown = 0;
@@ -26,6 +29,7 @@ public class Player_Actions : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        currentstate = PlayerState.walk;
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         style = new GUIStyle();
@@ -42,8 +46,6 @@ public class Player_Actions : MonoBehaviour
             change.x = Input.GetAxisRaw("Horizontal");
             change.y = Input.GetAxisRaw("Vertical");
         }
-        
-        UpdateAnimationAndMove();
         if(Input.GetKey("w"))
             direction = Vector2.up;
         if(Input.GetKey("a"))
@@ -65,15 +67,19 @@ public class Player_Actions : MonoBehaviour
             bombCooldown -= Time.deltaTime;
         if(attackCooldown <= 0)
         {
-            if(Input.GetKeyDown("space"))
+            if(Input.GetKeyDown("space") && currentstate != PlayerState.attack)
             {
-                attackCooldown = 1;
+                attackCooldown = .20f;
                 Attack();
+                StartCoroutine(AttackCo());
             }
         }
         else
             attackCooldown -= Time.deltaTime;
-        
+        if (currentstate == PlayerState.walk)
+        {
+            UpdateAnimationAndMove();
+        }
         if(hitCooldown <= 0)
             invincible = false;
         else
@@ -83,7 +89,15 @@ public class Player_Actions : MonoBehaviour
         }
 
     }
-    
+    private IEnumerator AttackCo()
+    {
+        animator.SetBool("attacking", true);
+        currentstate = PlayerState.attack;
+        yield return null;
+        animator.SetBool("attacking", false);
+        yield return new WaitForSeconds(.33f);
+        currentstate = PlayerState.walk;
+    }
     void Attack()
     {
         int layerMask = 1 << 8;
@@ -137,7 +151,17 @@ public class Player_Actions : MonoBehaviour
         score += amnt;
         kills++;
     }
-
+    public void ChangeGold(int amount, bool change)
+    {
+        if (change == true)
+        {
+            gold += amount;
+        }
+        else
+        {
+            gold -= amount;
+        }
+    }
 
     void Die()
     {
@@ -158,6 +182,7 @@ public class Player_Actions : MonoBehaviour
         string txt = "Health: " + health.ToString() + "\n" 
                     + "Score: " + score.ToString() + "\n" 
                     + "Kills: " + kills.ToString()  + "\n" 
+                    + "Gold: " + gold.ToString() + "\n"
                     + "Bombs: " + bombCount.ToString();
         GUI.TextField(new Rect(10, 10, 75, 40), txt, style);
     }
