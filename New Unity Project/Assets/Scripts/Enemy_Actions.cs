@@ -9,6 +9,7 @@ public class Enemy_Actions : MonoBehaviour
     public GameObject bomb;
     public GameObject coin;
     public GameObject heart;
+    public LayerMask ignore;
 
     int health = 3;
     float speed = 3;
@@ -52,40 +53,21 @@ public class Enemy_Actions : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.tag == "Player")
+        if(other.gameObject.tag == "Player")
         {
-            Vector2 direction = (other.transform.position - transform.position);
-            RaycastHit2D sight = Physics2D.Raycast(transform.position, direction * 5);
-            if(sight.collider.name == "Player")
-            {
-                startTimer = false;
-                spotted = true;
-                aggroTimer = 5;
-            }
+            ScanPlayer(other);
         }
     }
 
     void OnTriggerStay2D(Collider2D other)
     {
-        if(!spotted)
-        {
-            if(other.tag == "Player")
-            {
-                Vector2 direction = (other.transform.position - transform.position);
-                RaycastHit2D sight = Physics2D.Raycast(transform.position, direction * 5);
-                if(sight.collider.name == "Player")
-                {
-                    startTimer = false;
-                    spotted = true;
-                    aggroTimer = 5;
-                }
-            }
-        }
+        if(other.gameObject.tag == "Player")
+            ScanPlayer(other);
     }
 
     void OnTriggerExit2D(Collider2D other)
     {
-        if(other.tag == "Player")
+        if(other.gameObject.tag == "Player")
             startTimer = true;
     }
 
@@ -93,20 +75,37 @@ public class Enemy_Actions : MonoBehaviour
     void OnCollisionEnter2D(Collision2D other)
     {
         if(other.gameObject.tag == "Player")
-        {
-            other.gameObject.GetComponent<Player_Actions>().TakeDamage();
-            Vector2 direction = (other.transform.position - transform.position).normalized;
-            other.gameObject.GetComponent<Rigidbody2D>().AddForce(direction * 500);
-        }
+            AttackPlayer(other);
     }
 
     void OnCollisionStay2D(Collision2D other)
     {
         if(other.gameObject.tag == "Player")
+            AttackPlayer(other);
+    }
+
+    void AttackPlayer(Collision2D other)
+    {
+        other.gameObject.GetComponent<Player_Actions>().TakeDamage();
+        Vector2 direction = (other.transform.position - transform.position).normalized;
+        other.gameObject.GetComponent<Rigidbody2D>().AddForce(direction * 500);
+    }
+
+    void ScanPlayer(Collider2D other)
+    {
+        if(!spotted)
         {
-            other.gameObject.GetComponent<Player_Actions>().TakeDamage();
-            Vector2 direction = (other.transform.position - transform.position).normalized;
-            other.gameObject.GetComponent<Rigidbody2D>().AddForce(direction * 500);
+            Vector2 direction = (other.transform.position - transform.position);
+            RaycastHit2D sight = Physics2D.Raycast(transform.position, direction, 10f, ~ignore);
+            if(sight.collider != null)
+            {
+                if(sight.collider.name == "Player")
+                {
+                    startTimer = false;
+                    spotted = true;
+                    aggroTimer = 5;
+                }
+            }
         }
     }
 

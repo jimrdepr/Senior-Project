@@ -26,6 +26,7 @@ public class Player_Actions : MonoBehaviour
     RaycastHit2D hit;
     GUIStyle style;
     public GameObject bomb;
+    public LayerMask ignore;
 
     // Start is called before the first frame update
     void Start()
@@ -58,10 +59,13 @@ public class Player_Actions : MonoBehaviour
 
         if(bombCooldown <= 0)
         {
-            if(Input.GetKeyDown("e"))
+            if(!dead)
             {
-                bombCooldown = 1;
-                PlaceBomb();
+                if(Input.GetKeyDown("e"))
+                {
+                    bombCooldown = 1;
+                    PlaceBomb();
+                }
             }
         }
         else
@@ -109,10 +113,8 @@ public class Player_Actions : MonoBehaviour
 
     void Attack()
     {
-        int layerMask = 1 << 8;
-        layerMask = ~layerMask;
-        hit = Physics2D.CircleCast(transform.position, 1f, direction, range, layerMask);
-
+        hit = Physics2D.CircleCast(transform.position, 1f, direction, range, ~ignore);
+ 
         if(hit.collider != null)
         {
             if(hit.collider.gameObject.tag == "Enemy")
@@ -126,8 +128,9 @@ public class Player_Actions : MonoBehaviour
             {
                 hit.collider.gameObject.GetComponent<Open_Chest>().Open();
             }
-            print(hit.collider.name);
         }
+
+        
     }
 
     void UpdateAnimationAndMove()

@@ -261,6 +261,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentstate: 0
   bomb: {fileID: 3084332312602380361, guid: ade3291f83220804f8cc457f60f9e4ef, type: 3}
+  ignore:
+    serializedVersion: 2
+    m_Bits: 8
 --- !u!61 &900406229
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -13301,7 +13304,7 @@ GameObject:
   - component: {fileID: 1432177934}
   - component: {fileID: 1432177933}
   - component: {fileID: 1432177932}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Sp-eye-der
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -13379,6 +13382,9 @@ MonoBehaviour:
   bomb: {fileID: 1922440966336689912, guid: acf4c2aeef2fc7642ba9feb937001f55, type: 3}
   coin: {fileID: 5065990226133137919, guid: 12bd77095a3558a4fb38e24c8cbcd71c, type: 3}
   heart: {fileID: 391345551156808990, guid: afa82977830c5a34dbe92160b7f4da10, type: 3}
+  ignore:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!61 &1432177936
 BoxCollider2D:
   m_ObjectHideFlags: 0
