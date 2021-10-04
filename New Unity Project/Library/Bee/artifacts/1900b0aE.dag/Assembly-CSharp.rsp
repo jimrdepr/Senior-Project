@@ -335,10 +335,15 @@
 "Assets/Scripts/Camera_Follow.cs"
 "Assets/Scripts/Enemy_Actions.cs"
 "Assets/Scripts/Floor_Trap.cs"
+"Assets/Scripts/Game_Over.cs"
 "Assets/Scripts/Item_Pickup.cs"
 "Assets/Scripts/Open_Chest.cs"
 "Assets/Scripts/Player_Actions.cs"
+<<<<<<< HEAD
 "Assets/zoom.cs"
+=======
+"Assets/Scripts/Restart_Button.cs"
+>>>>>>> bdca7ea3f24b957073925b8b857c34a263305134
 -langversion:8.0
 
 /deterministic
