@@ -196,6 +196,10 @@ public class Player_Actions : MonoBehaviour
     {
         dead = true;
         Destroy(GetComponent<BoxCollider2D>());
+        GameObject gameOver = GameObject.FindWithTag("Game Over");
+        Game_Over g = gameOver.GetComponent<Game_Over>();
+        g.GameOverText(score);
+        g.ShowGameOver();
     }
 
     void PlaceBomb()

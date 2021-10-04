@@ -44,7 +44,6 @@ public class Bomb : MonoBehaviour
         Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, 5);
         foreach(Collider2D i in hits)
         {
-            print(i.gameObject.name);
             if(i.gameObject.tag == "Player")
             {
                 i.gameObject.GetComponent<Player_Actions>().TakeDamage();
@@ -58,6 +57,4 @@ public class Bomb : MonoBehaviour
         }
         Destroy(gameObject);
     }
-
-
 }

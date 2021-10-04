@@ -335,9 +335,11 @@
 "Assets/Scripts/Camera_Follow.cs"
 "Assets/Scripts/Enemy_Actions.cs"
 "Assets/Scripts/Floor_Trap.cs"
+"Assets/Scripts/Game_Over.cs"
 "Assets/Scripts/Item_Pickup.cs"
 "Assets/Scripts/Open_Chest.cs"
 "Assets/Scripts/Player_Actions.cs"
+"Assets/Scripts/Restart_Button.cs"
 -langversion:8.0
 
 /deterministic
