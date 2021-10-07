@@ -95,7 +95,6 @@ public class Player_Actions : MonoBehaviour
             invincible = false;
         else
         {
-            invincible = true;
             hitCooldown -= Time.smoothDeltaTime;
         }
 
@@ -156,11 +155,18 @@ public class Player_Actions : MonoBehaviour
     {
         if(!invincible && !dead)
         {
+            invincible = true;
             health--;
-            hitCooldown = 2;
+            hitCooldown = 1;
             if(health <= 0)
                 Die();
         }
+    }
+
+    public void AddKnockback(Transform other, int force)
+    {
+        Vector2 hitDirection = (transform.position - other.transform.position).normalized;
+        rb.AddForce(hitDirection * force);
     }
 
     public void AddScore(int amnt)

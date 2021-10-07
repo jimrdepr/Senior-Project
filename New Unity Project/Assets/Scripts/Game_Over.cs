@@ -11,7 +11,7 @@ public class Game_Over : MonoBehaviour
     void Start()
     {
         canvas = GetComponent<Canvas>();
-        box = GameObject.Find("Game Over Screen/Text").GetComponentInChildren<Text>();
+        box = GameObject.Find("Game Over Screen/Text").GetComponent<Text>();
         canvas.enabled = false;
     }
 

@@ -46,7 +46,6 @@ public class Enemy_Actions : MonoBehaviour
             invincible = false;
         else
         {
-            invincible = true;
             hitCooldown -= Time.smoothDeltaTime;
         }
     }
@@ -96,7 +95,7 @@ public class Enemy_Actions : MonoBehaviour
         if(!spotted)
         {
             Vector2 direction = (other.transform.position - transform.position);
-            RaycastHit2D sight = Physics2D.Raycast(transform.position, direction, 10f, ~ignore);
+            RaycastHit2D sight = Physics2D.Raycast(transform.position, direction, 20f, ~ignore);
             if(sight.collider != null)
             {
                 if(sight.collider.name == "Player")
@@ -122,6 +121,7 @@ public class Enemy_Actions : MonoBehaviour
     {
         if(!invincible)
         {
+            invincible = true;
             health--;
             hitCooldown = 1;
             if(health <= 0)
@@ -131,7 +131,6 @@ public class Enemy_Actions : MonoBehaviour
 
     public void AddKnockback(Transform other, int force)
     {
-        Rigidbody2D rb = GetComponent<Rigidbody2D>();
         Vector2 hitDirection = (transform.position - other.transform.position).normalized;
         GetComponent<Rigidbody2D>().AddForce(hitDirection * force);
     }

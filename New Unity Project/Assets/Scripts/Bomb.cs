@@ -41,12 +41,14 @@ public class Bomb : MonoBehaviour
     void Explode()
     {
         
-        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, 5);
+        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, 3);
         foreach(Collider2D i in hits)
         {
             if(i.gameObject.tag == "Player")
             {
-                i.gameObject.GetComponent<Player_Actions>().TakeDamage();
+                Player_Actions p = i.gameObject.GetComponent<Player_Actions>();
+                p.TakeDamage();
+                p.AddKnockback(transform, 1000);
             }
             if(i.gameObject.tag == "Enemy")
             {
