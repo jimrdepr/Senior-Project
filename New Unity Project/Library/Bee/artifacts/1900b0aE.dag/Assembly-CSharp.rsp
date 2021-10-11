@@ -341,6 +341,7 @@
 "Assets/Scripts/Place_Objects.cs"
 "Assets/Scripts/Player_Actions.cs"
 "Assets/Scripts/Restart_Button.cs"
+"Assets/Scripts/Start_Button.cs"
 "Assets/zoom.cs"
 -langversion:8.0
 
