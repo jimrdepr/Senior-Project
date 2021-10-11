@@ -112,7 +112,7 @@ public class Player_Actions : MonoBehaviour
 
     void Attack()
     {
-        hit = Physics2D.CircleCast(transform.position, 1f, direction, range, ~ignore);
+        hit = Physics2D.CircleCast(transform.position, 2f, direction, range, ~ignore);
  
         if(hit.collider != null)
         {

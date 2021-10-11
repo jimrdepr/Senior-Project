@@ -23,14 +23,18 @@ public class Place_Objects : MonoBehaviour
         trapPos.Add(new Vector3(-50, 0, 0));;
 
         spiderPos = new List<Vector3>();
-        spiderPos.Add(new Vector3(31.75f, -7, 0));
-        spiderPos.Add(new Vector3(33.25f, -7, 0));
-        spiderPos.Add(new Vector3(-37f, -4, 0));
-        spiderPos.Add(new Vector3(-34f, -4, 0));
+        spiderPos.Add(new Vector3(31.75f, -7f, 0));
+        spiderPos.Add(new Vector3(33.25f, -7f, 0));
+        spiderPos.Add(new Vector3(-37f, -4f, 0));
+        spiderPos.Add(new Vector3(-34f, -4f, 0));
+        spiderPos.Add(new Vector3(-47f, 12f, 0));
+        spiderPos.Add(new Vector3(-41f, 9f, 0));
+        spiderPos.Add(new Vector3(-40f, 12f, 0));
 
         chestPos = new List<Vector3>();
         chestPos.Add(new Vector3(32.5f, -8.5f, 0));
         chestPos.Add(new Vector3(-40.5f, -3.5f, 0));
+        chestPos.Add(new Vector3(-49f, 12f, 0));
 
         foreach (Vector3 i in trapPos)
         {
