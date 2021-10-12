@@ -81853,6 +81853,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7425951765017977921, guid: 2cd598a57ea3f034b81fc7b43a91a143, type: 3}
+      propertyPath: m_Radius
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 7425951765017977924, guid: 2cd598a57ea3f034b81fc7b43a91a143, type: 3}
       propertyPath: m_Name
       value: Sp-eye-der
@@ -81908,6 +81912,10 @@ PrefabInstance:
     - target: {fileID: 7425951765017977950, guid: 2cd598a57ea3f034b81fc7b43a91a143, type: 3}
       propertyPath: m_SortingLayerID
       value: 1580736347
+      objectReference: {fileID: 0}
+    - target: {fileID: 7425951765017977951, guid: 2cd598a57ea3f034b81fc7b43a91a143, type: 3}
+      propertyPath: m_EdgeRadius
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2cd598a57ea3f034b81fc7b43a91a143, type: 3}

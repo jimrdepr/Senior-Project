@@ -15,12 +15,12 @@ public class Place_Objects : MonoBehaviour
     void Start()
     {
         trapPos = new List<Vector3>();
-        trapPos.Add(new Vector3(7, -16, 0));
-        trapPos.Add(new Vector3(8, -16, 0));
-        trapPos.Add(new Vector3(34, -5, 0));
-        trapPos.Add(new Vector3(34, -4, 0));;
-        trapPos.Add(new Vector3(-50, 1, 0));;
-        trapPos.Add(new Vector3(-50, 0, 0));;
+        trapPos.Add(new Vector3(7f, -16f, 0));
+        trapPos.Add(new Vector3(8f, -16f, 0));
+        trapPos.Add(new Vector3(34f, -5f, 0));
+        trapPos.Add(new Vector3(34f, -4f, 0));
+        trapPos.Add(new Vector3(-50f, 0, 0));
+        trapPos.Add(new Vector3(-50f, 1f, 0));
 
         spiderPos = new List<Vector3>();
         spiderPos.Add(new Vector3(31.75f, -7f, 0));

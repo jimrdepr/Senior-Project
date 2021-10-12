@@ -4,53 +4,50 @@ using UnityEngine;
 
 public class Floor_Trap : MonoBehaviour
 {
-    float coolDown;
-    bool startTrap;
-    Collider2D box;
+    bool triggered;
+    SpriteRenderer sprite;
     // Start is called before the first frame update
     void Start()
     {
-        coolDown = 0;
-        startTrap = false;
-        box = GetComponent<BoxCollider2D>();
+        triggered = false;
+        sprite = GetComponent<SpriteRenderer>();
     }
 
-    // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        if(startTrap)
-        {
-            if(coolDown <= 0)
-            {
-                Collider2D[] hit = Physics2D.OverlapBoxAll(transform.position, box.bounds.size, 0);
-                foreach(Collider2D i in hit)
-                {
-                    if(i.tag == "Player")
-                        i.gameObject.GetComponent<Player_Actions>().TakeDamage();
-                    if(i.tag == "Enemy")
-                        i.gameObject.GetComponent<Enemy_Actions>().TakeDamage();
-                }
-                coolDown = 2;
-            }
-            else
-                coolDown -= Time.deltaTime;
-        }
+        if(triggered)
+            Triggered();
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.gameObject.tag == "Player" || other.gameObject.tag == "Enemy")
+        if(!triggered && !other.isTrigger)
         {
-            startTrap = true;
-            coolDown = 2;
+            if(other.gameObject.tag == "Player")
+            {
+                triggered = true;
+                Player_Actions p = other.gameObject.GetComponent<Player_Actions>();
+                p.TakeDamage();
+                p.AddKnockback(transform, 500);
+            }
+
+            else if(other.gameObject.tag == "Enemy")
+            {
+                triggered = true;
+                Enemy_Actions e = other.gameObject.GetComponent<Enemy_Actions>();
+                e.TakeDamage();
+                e.AddKnockback(transform, 500); 
+            }
+                    
+            else if(other.gameObject.tag == "Bomb")
+            {
+                triggered = true;
+            }
         }
     }
 
-    void OnTriggerExit2D(Collider2D other)
+    void Triggered()
     {
-        if(other.gameObject.tag == "Player" || other.gameObject.tag == "Enemy")
-        {
-            startTrap = false;
-        }
+        sprite.color = new Color(255, 0, 0, 1);
     }
 }
