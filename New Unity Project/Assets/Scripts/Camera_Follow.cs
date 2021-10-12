@@ -6,6 +6,8 @@ public class Camera_Follow : MonoBehaviour
 {
     Transform target;
     Vector3 offset;
+	public Vector2 maxPosition;
+	public Vector2 minPosition;
     // Start is called before the first frame update
     void Start()
     {
