@@ -1,12 +1,3 @@
 Base path: 'C:/Program Files/Unity 2021.1.18f1/Editor/Data', plugins path 'C:/Program Files/Unity 2021.1.18f1/Editor/Data/PlaybackEngines'
 Cmd: initializeCompiler
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-Cmd: shutdown
-
-Quitting shader compiler process
->>>>>>> 535107b6d4cf8bb638636847465fddbfc3815ce4
->>>>>>> 901361b343369df3c44e03f3e2b42950d0708d81
