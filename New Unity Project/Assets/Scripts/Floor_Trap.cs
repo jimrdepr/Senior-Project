@@ -6,17 +6,12 @@ public class Floor_Trap : MonoBehaviour
 {
     bool triggered;
     SpriteRenderer sprite;
+    public Sprite extended;
     // Start is called before the first frame update
     void Start()
     {
         triggered = false;
         sprite = GetComponent<SpriteRenderer>();
-    }
-
-    void FixedUpdate()
-    {
-        if(triggered)
-            Triggered();
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -29,6 +24,7 @@ public class Floor_Trap : MonoBehaviour
                 Player_Actions p = other.gameObject.GetComponent<Player_Actions>();
                 p.TakeDamage();
                 p.AddKnockback(transform, 500);
+                Triggered();
             }
 
             else if(other.gameObject.tag == "Enemy")
@@ -37,17 +33,19 @@ public class Floor_Trap : MonoBehaviour
                 Enemy_Actions e = other.gameObject.GetComponent<Enemy_Actions>();
                 e.TakeDamage();
                 e.AddKnockback(transform, 500); 
+                Triggered();
             }
                     
             else if(other.gameObject.tag == "Bomb")
             {
                 triggered = true;
+                Triggered();
             }
         }
     }
 
     void Triggered()
     {
-        sprite.color = new Color(255, 0, 0, 1);
+        sprite.sprite = extended;
     }
 }
