@@ -80,6 +80,7 @@ public class Place_Objects : MonoBehaviour
         spiderPos.Add(new Vector3(-2f, -17f, 0));
         spiderPos.Add(new Vector3(-32.5f, -11f, 0));
         spiderPos.Add(new Vector3(-44f, -13f, 0));
+        spiderPos.Add(new Vector3(-47f, -11f, 0));
 
         chestPos = new List<Vector3>();
         chestPos.Add(new Vector3(32.5f, -8.5f, 0));
