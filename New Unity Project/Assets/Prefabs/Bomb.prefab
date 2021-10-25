@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3084332312602380722}
   - component: {fileID: 3084332312602380725}
   - component: {fileID: 3084332312602380724}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Bomb
   m_TagString: Bomb
   m_Icon: {fileID: 0}
@@ -96,3 +96,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f1fa3ccb13d78d45ac73f9328fcd5f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ignore:
+    serializedVersion: 2
+    m_Bits: 128
