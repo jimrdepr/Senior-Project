@@ -20,7 +20,6 @@ public class Floor_Trap : MonoBehaviour
         {
             if(other.gameObject.tag == "Player")
             {
-                triggered = true;
                 Player_Actions p = other.gameObject.GetComponent<Player_Actions>();
                 p.TakeDamage();
                 p.AddKnockback(transform, 500);
@@ -29,7 +28,6 @@ public class Floor_Trap : MonoBehaviour
 
             else if(other.gameObject.tag == "Enemy")
             {
-                triggered = true;
                 Enemy_Actions e = other.gameObject.GetComponent<Enemy_Actions>();
                 e.TakeDamage();
                 e.AddKnockback(transform, 500); 
@@ -38,7 +36,6 @@ public class Floor_Trap : MonoBehaviour
                     
             else if(other.gameObject.tag == "Bomb")
             {
-                triggered = true;
                 Triggered();
             }
         }
@@ -46,6 +43,7 @@ public class Floor_Trap : MonoBehaviour
 
     void Triggered()
     {
+        triggered = true;
         sprite.sprite = extended;
     }
 }

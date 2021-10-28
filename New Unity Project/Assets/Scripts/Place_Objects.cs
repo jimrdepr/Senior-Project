@@ -61,6 +61,24 @@ public class Place_Objects : MonoBehaviour
         trapPos.Add(new Vector3(-26f, -17f, 0));
         trapPos.Add(new Vector3(-27f, -17f, 0));
         trapPos.Add(new Vector3(-34.5f, -14f, 0));
+        trapPos.Add(new Vector3(-3.5f, -28.5f, 0));
+        trapPos.Add(new Vector3(-2.5f, -28.5f, 0));
+        trapPos.Add(new Vector3(-1.5f, -28.5f, 0));
+        trapPos.Add(new Vector3(.5f, -34.5f, 0));
+        trapPos.Add(new Vector3(1.5f, -34.5f, 0));
+        trapPos.Add(new Vector3(2.5f, -34.5f, 0));
+        trapPos.Add(new Vector3(-1.5f, -47.5f, 0));
+        trapPos.Add(new Vector3(-.5f, -47.5f, 0));
+        trapPos.Add(new Vector3(.5f, -47.5f, 0));
+        trapPos.Add(new Vector3(1.5f, -47.5f, 0));
+        trapPos.Add(new Vector3(2.5f, -47.5f, 0));
+        trapPos.Add(new Vector3(4.5f, -51.5f, 0));
+        trapPos.Add(new Vector3(3.5f, -51.5f, 0));
+        trapPos.Add(new Vector3(2.5f, -51.5f, 0));
+        trapPos.Add(new Vector3(10.5f, -50.5f, 0));
+        trapPos.Add(new Vector3(11.5f, -50.5f, 0));
+        trapPos.Add(new Vector3(12.5f, -50.5f, 0));
+        trapPos.Add(new Vector3(13.5f, -50.5f, 0));
 
         spiderPos = new List<Vector3>();
         spiderPos.Add(new Vector3(31.75f, -7f, 0));
@@ -81,6 +99,25 @@ public class Place_Objects : MonoBehaviour
         spiderPos.Add(new Vector3(-32.5f, -11f, 0));
         spiderPos.Add(new Vector3(-44f, -13f, 0));
         spiderPos.Add(new Vector3(-47f, -11f, 0));
+        spiderPos.Add(new Vector3(-42f, -20f, 0));
+        spiderPos.Add(new Vector3(33.5f, -18.5f, 0));
+        spiderPos.Add(new Vector3(32f, -24f, 0));
+        spiderPos.Add(new Vector3(34f, -24f, 0));
+        spiderPos.Add(new Vector3(36f, -24f, 0));
+        spiderPos.Add(new Vector3(45.5f, 3.5f, 0));
+        spiderPos.Add(new Vector3(41f, 3.5f, 0));
+        spiderPos.Add(new Vector3(45.5f, 12f, 0));
+        spiderPos.Add(new Vector3(45.5f, 16.5f, 0));
+        spiderPos.Add(new Vector3(35f, 11f, 0));
+        spiderPos.Add(new Vector3(-8f, -43.5f, 0));
+        spiderPos.Add(new Vector3(-7f, -43.5f, 0));
+        spiderPos.Add(new Vector3(-6f, -43.5f, 0));
+        spiderPos.Add(new Vector3(-5f, -43.5f, 0));
+        spiderPos.Add(new Vector3(11.5f, -55.5f, 0));
+        spiderPos.Add(new Vector3(11.5f, -54.5f, 0));
+        spiderPos.Add(new Vector3(-2.5f, -53.5f, 0));
+        spiderPos.Add(new Vector3(20f, -39f, 0));
+        spiderPos.Add(new Vector3(11.5f, -38.5f, 0));
 
         chestPos = new List<Vector3>();
         chestPos.Add(new Vector3(32.5f, -8.5f, 0));
@@ -97,6 +134,9 @@ public class Place_Objects : MonoBehaviour
         chestPos.Add(new Vector3(42f, -20f, 0));
         chestPos.Add(new Vector3(42f, -22f, 0));
         chestPos.Add(new Vector3(42f, -24f, 0));
+        chestPos.Add(new Vector3(19f, -24f, 0));
+        chestPos.Add(new Vector3(45.5f, 11f, 0));
+        chestPos.Add(new Vector3(13.5f, -55f, 0));
 
         bombPos = new List<Vector3>();
         bombPos.Add(new Vector3(-48.5f, .5f, 0));
